@@ -1,0 +1,513 @@
+/* Custom styles that complement Tailwind CSS */
+
+/* Rotate utility for album art in genre cards */
+.rotate-25 {
+  transform: rotate(25deg);
+}
+
+/* Custom scrollbar for playlists */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #5a5a5a;
+  border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  /* Adjust song list for mobile */
+  .flex.items-center.text-spotify-gray.mb-3.px-4 > div:nth-child(3),
+  .flex.items-center.text-spotify-gray.mb-3.px-4 > div:nth-child(4),
+  .flex.items-center.mb-3.px-4.py-2 > div:nth-child(3),
+  .flex.items-center.mb-3.px-4.py-2 > div:nth-child(4) {
+    display: none;
+  }
+  
+  /* Make song items more compact on mobile */
+  .flex.items-center.mb-3.px-4.py-2 {
+    padding: 8px 4px;
+  }
+  
+  .flex.items-center.mb-3.px-4.py-2 .w-10 {
+    width: 24px;
+  }
+  
+  .flex.items-center.mb-3.px-4.py-2 .w-20 {
+    width: 40px;
+  }
+  
+  /* Ensure song titles don't overflow */
+  .flex.items-center.mb-3.px-4.py-2 .flex-grow.flex.items-center div {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Adjust player bar for mobile */
+  .fixed.bottom-0.left-0.right-0 {
+    padding: 8px 4px;
+  }
+  
+  .fixed.bottom-0.left-0.right-0 .flex.items-center.justify-between {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .fixed.bottom-0.left-0.right-0 .w-1/4,
+  .fixed.bottom-0.left-0.right-0 .w-2/4 {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  /* Adjust current song info */
+  .fixed.bottom-0.left-0.right-0 .w-1/4 img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .fixed.bottom-0.left-0.right-0 .w-1/4 div {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Adjust player controls */
+  .fixed.bottom-0.left-0.right-0 .w-2/4 .flex.items-center.justify-center button {
+    margin: 0 5px;
+  }
+  
+  /* Adjust volume controls */
+  .fixed.bottom-0.left-0.right-0 .w-1/4.flex.items-center.justify-end {
+    justify-content: center;
+  }
+  
+  /* Adjust header for mobile */
+  header .flex.items-end.gap-6 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 1.75rem;
+  }
+  
+  /* Adjust playlist description text */
+  header p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Volume slider styling */
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #1db954; /* Spotify green */
+  cursor: pointer;
+  margin-top: -4px; /* Aligns the thumb vertically */
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #1db954;
+  cursor: pointer;
+}
+
+input[type='range']::-ms-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #1db954;
+  cursor: pointer;
+}
+
+/* Mobile sidebar animation */
+.transform.translate-x-0 {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.transform.-translate-x-full {
+  transform: translateX(-100%);
+  visibility: hidden;
+}
+
+/* Ensure mobile sidebar has proper z-index and transition */
+#sidebarMenu {
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 50;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.playlist-item a:hover {
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.install-app a {
+  color: #b3b3b3;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.install-app a:hover {
+  color: #fff;
+}
+
+/* Content Container */
+.content-container {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #121212;
+  position: relative;
+}
+
+/* Top Navbar */
+.top-navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  /* Backdrop filter for sticky elements */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Play button icon adjustment */
+.fa-play {
+  margin-left: 1px; /* Adjust play icon position */
+}
+
+/* Song hover effect */
+.group:hover .group-hover\:inline-block {
+  display: inline-block;
+}
+
+.group:hover .group-hover\:hidden {
+  display: none;
+}
+
+/* Playlist card hover effects */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:translate-y-0 {
+  transform: translateY(0);
+}
+
+/* Like button animation */
+.like-button:hover {
+  color: #1ED760;
+  transform: scale(1.1);
+}
+
+/* Toast notification styling */
+.toast-enter {
+  transform: translateX(100%);
+}
+
+.toast-enter-active {
+  transform: translateX(0%);
+  transition: transform 300ms;
+}
+
+.toast-exit {
+  transform: translateX(0%);
+}
+
+.toast-exit-active {
+  transform: translateX(100%);
+  transition: transform 300ms;
+}
+
+/* Toast notifications */
+.toast-container {
+  position: fixed;
+  bottom: 120px; /* Increased to account for taller player bar on mobile */
+  right: 10px;
+  left: 10px;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Dropdown menu animation */
+.group:hover .group-hover\:block {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Toast responsive styles */
+@media (max-width: 768px) {
+  #likeToast, #playToast, #playlistToast {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Mobile specific styles */
+}
+
+/* Time display in player */
+.time-display {
+  width: 80px;
+  text-align: right;
+}
+
+
+.song-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.song-item {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.song-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom range input styling */
+.form-range::-webkit-slider-thumb {
+    background: #1db954;
+}
+
+.form-range::-moz-range-thumb {
+    background: #1db954;
+}
+
+/* Custom range slider styling */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #535353;
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #535353;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 6px;
+  border: 3px solid #121212;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Playlist image shadow effect */
+.playlist-img-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Text truncation */
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Genre card styling */
+.genre-card {
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.genre-card:hover {
+  transform: scale(1.02);
+}
+
+.genre-title {
+  font-size: 24px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+}
+
+.genre-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  transform: rotate(25deg) translate(18%, -2%);
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Now Playing Bar */
+.now-playing-bar {
+  height: 90px;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+  padding: 0 16px;
+}
+
+/* Player bar styling */
+.player-bar-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Play button hover effect */
+.play-button-hover:hover {
+  transform: scale(1.06);
+  transition: transform 0.2s ease;
+}
+
+/* Progress bar hover effect */
+.progress-bar-container {
+  background-color: #535353;
+  cursor: pointer;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.progress-bar-container:hover .progress-bar-fill {
+  background-color: #1db954;
+}
+
+.progress-bar-fill {
+  background-color: #fff;
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* Player time display */
+.player-time-display {
+  font-size: 12px;
+  color: #b3b3b3;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .lg\:hidden {
+    display: none;
+  }
+  
+  .sidebar-collapsed {
+    width: 80px;
+  }
+  
+  .sidebar-collapsed .nav-text,
+  .sidebar-collapsed .action-text,
+  .sidebar-collapsed .playlist-item,
+  .sidebar-collapsed .install-text {
+    display: none;
+  }
+  
+  .sidebar-collapsed .action-icon {
+    margin-right: 0;
+  }
+  
+  .logo-small {
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .current-song-artist,
+  .volume-container {
+    display: none;
+  }
+  
+  .hero-image {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    display: none;
+  }
+  
+  .hero-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .hero-text h1 {
+    font-size: 24px;
+  }
+  
+  .current-song-name {
+    max-width: 80px;
+  }
+}

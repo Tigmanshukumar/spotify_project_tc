@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify - Web Player: Music for everyone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "spotify-green": "#1ED760",
+              "spotify-black": "#121212",
+              "spotify-dark": "#181818",
+              "spotify-light-black": "#282828",
+              "spotify-gray": "#b3b3b3",
+            },
+            fontFamily: {
+              montserrat: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://ext.same-assets.com/3072843978/84745728.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="bg-spotify-black text-white font-montserrat overflow-hidden">
+    <div class="flex h-[calc(100vh-90px)] overflow-hidden">
+      <!-- SIDEBAR -->
+      <div
+        class="w-60 h-full bg-black p-6 overflow-y-auto flex-shrink-0 hidden md:block"
+      >
+        <div class="logo mb-4">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="#1ED760"
+              class="bi bi-spotify"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"
+              />
+            </svg>
+          </a>
+        </div>
+        <ul class="flex flex-col mb-5 space-y-2">
+          <li>
+            <a
+              class="flex items-center py-2 px-3 text-white hover:text-spotify-green rounded-md bg-spotify-light-black"
+              href="#"
+            >
+              <i class="fas fa-home mr-3"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center py-2 px-3 text-spotify-gray hover:text-white rounded-md"
+              href="#"
+            >
+              <i class="fas fa-search mr-3"></i>
+              <span>Search</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center py-2 px-3 text-spotify-gray hover:text-white rounded-md"
+              href="#"
+            >
+              <i class="fas fa-book mr-3"></i>
+              <span>Your Library</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mb-4 space-y-3">
+          <div
+            class="flex items-center cursor-pointer hover:text-spotify-green"
+            role="button"
+          >
+            <div
+              class="w-6 h-6 bg-spotify-gray rounded mr-3 flex items-center justify-center"
+            >
+              <i class="fas fa-plus"></i>
+            </div>
+            <span>Create Playlist</span>
+          </div>
+          <div
+            class="flex items-center cursor-pointer hover:text-spotify-green"
+          >
+            <div
+              class="w-6 h-6 bg-gradient-to-br from-purple-700 to-blue-400 rounded mr-3 flex items-center justify-center"
+            >
+              <i class="fas fa-heart"></i>
+            </div>
+            <span>Liked Songs</span>
+          </div>
+        </div>
+        <div class="border-t border-spotify-light-black my-3"></div>
+        <div class="text-spotify-gray">
+          <div class="mb-2">
+            <a href="#" class="hover:text-white">My Playlist #1</a>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="hover:text-white">Discover Weekly</a>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="hover:text-white">Release Radar</a>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="hover:text-white">Rock Classics</a>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="hover:text-white">Chill Hits</a>
+          </div>
+        </div>
+        <div class="border-t border-spotify-light-black my-3"></div>
+
+        <div class="flex flex-col gap-3">
+          <button class="cursor-pointer">
+            <div
+              class="flex max-w-48 h-12 px-3 gap-2 rounded-xl items-center justify-center bg-black text-white dark:text-black dark:bg-white sm:h-14"
+            >
+              <svg viewBox="30 336.7 120.9 129.2" class="w-5 sm:w-7">
+                <path
+                  d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"
+                  fill="#FFD400"
+                ></path>
+                <path
+                  d="M99.1,401.1l-64.2,64.7c1.5,0.2,3.2-0.2,5.2-1.3  c4.2-2.3,48.8-26.7,79.1-43.3L99.1,401.1L99.1,401.1z"
+                  fill="#FF3333"
+                ></path>
+                <path
+                  d="M99.1,401.1l20.1-20.2c0,0-74.6-40.7-79.1-43.1  c-1.7-1-3.6-1.3-5.3-1L99.1,401.1z"
+                  fill="#48FF48"
+                ></path>
+                <path
+                  d="M99.1,401.1l-64.3-64.3c-2.6,0.6-4.8,2.9-4.8,7.6  c0,7.5,0,107.5,0,113.8c0,4.3,1.7,7.4,4.9,7.7L99.1,401.1z"
+                  fill="#3BCCFF"
+                ></path>
+              </svg>
+              <div>
+                <div class="text-[.5rem] sm:text-xs text-left">GET IT ON</div>
+                <div class="text-sm font-semibold font-sans -mt-1 sm:text-xl">
+                  Google Play
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button class="cursor-pointer">
+            <div
+              class="flex max-w-48 h-12 px-3 gap-2 rounded-xl items-center justify-center bg-black text-white dark:text-black dark:bg-white sm:gap-3 sm:h-14"
+            >
+              <svg viewBox="0 0 384 512" class="w-5 sm:w-7">
+                <path
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <div>
+                <div class="text-[.5rem] sm:text-xs text-left">
+                  Download on the
+                </div>
+                <div class="text-lg font-semibold font-sans -mt-1 sm:text-2xl">
+                  App Store
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button class="cursor-pointer">
+            <div
+              class="flex max-w-48 h-12 px-3 py-4 gap-2 rounded-xl items-center justify-center bg-black text-white dark:text-black dark:bg-white sm:h-14"
+            >
+              <svg viewBox="0 0 16 16" class="w-5 sm:w-7">
+                <path
+                  fill="currentColor"
+                  d="m10.213 1.471l.691-1.26q.069-.124-.048-.192q-.128-.057-.195.058l-.7 1.27A4.8 4.8 0 0 0 8.005.941q-1.032 0-1.956.404l-.7-1.27Q5.281-.037 5.154.02q-.117.069-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.7 3.7 0 0 0 3.5 5.02h9q0-1.125-.623-2.072a4.27 4.27 0 0 0-1.664-1.476ZM6.22 3.303a.37.37 0 0 1-.267.11a.35.35 0 0 1-.263-.11a.37.37 0 0 1-.107-.264a.37.37 0 0 1 .107-.265a.35.35 0 0 1 .263-.11q.155 0 .267.11a.36.36 0 0 1 .112.265a.36.36 0 0 1-.112.264m4.101 0a.35.35 0 0 1-.262.11a.37.37 0 0 1-.268-.11a.36.36 0 0 1-.112-.264q0-.154.112-.265a.37.37 0 0 1 .268-.11q.155 0 .262.11a.37.37 0 0 1 .107.265q0 .153-.107.264M3.5 11.77q0 .441.311.75q.311.306.76.307h.758l.01 2.182q0 .414.292.703a.96.96 0 0 0 .7.288a.97.97 0 0 0 .71-.288a.95.95 0 0 0 .292-.703v-2.182h1.343v2.182q0 .414.292.703a.97.97 0 0 0 .71.288a.97.97 0 0 0 .71-.288a.95.95 0 0 0 .292-.703v-2.182h.76q.436 0 .749-.308q.31-.307.311-.75V5.365h-9zm10.495-6.587a.98.98 0 0 0-.702.278a.9.9 0 0 0-.293.685v4.063q0 .406.293.69a.97.97 0 0 0 .702.284q.42 0 .712-.284a.92.92 0 0 0 .293-.69V6.146a.9.9 0 0 0-.293-.685a1 1 0 0 0-.712-.278m-12.702.283a1 1 0 0 1 .712-.283q.41 0 .702.283a.9.9 0 0 1 .293.68v4.063a.93.93 0 0 1-.288.69a.97.97 0 0 1-.707.284a1 1 0 0 1-.712-.284a.92.92 0 0 1-.293-.69V6.146q0-.396.293-.68"
+                ></path>
+              </svg>
+              <div>
+                <div class="text-[.5rem] sm:text-xs text-left">Download</div>
+                <div class="text-sm font-semibold font-sans -mt-1 sm:text-xl">
+                  Android APK
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- SIDEBAR END -->
+
+      <!-- Mobile Sidebar -->
+      <div
+        class="fixed inset-0 bg-black text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50 w-64 h-full"
+        id="sidebarMenu"
+        aria-labelledby="sidebarMenuLabel"
+      >
+        <div class="flex justify-between items-center p-4">
+          <div class="logo">
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="#1ED760"
+                class="bi bi-spotify"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"
+                />
+              </svg>
+            </a>
+          </div>
+          <button
+            type="button"
+            class="text-white hover:text-spotify-gray"
+            aria-label="Close"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="p-4 overflow-y-auto">
+          <ul class="flex flex-col mb-5 space-y-2">
+            <li>
+              <a
+                class="flex items-center py-2 px-3 text-white hover:text-spotify-green rounded-md bg-spotify-light-black"
+                href="#"
+              >
+                <i class="fas fa-home mr-3"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="flex items-center py-2 px-3 text-spotify-gray hover:text-white rounded-md"
+                href="#"
+              >
+                <i class="fas fa-search mr-3"></i>
+                <span>Search</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="flex items-center py-2 px-3 text-spotify-gray hover:text-white rounded-md"
+                href="#"
+              >
+                <i class="fas fa-book mr-3"></i>
+                <span>Your Library</span>
+              </a>
+            </li>
+          </ul>
+          <div class="mb-4 space-y-3">
+            <div
+              class="flex items-center cursor-pointer hover:text-spotify-green"
+              role="button"
+            >
+              <div
+                class="w-6 h-6 bg-spotify-gray rounded mr-3 flex items-center justify-center"
+              >
+                <i class="fas fa-plus"></i>
+              </div>
+              <span>Create Playlist</span>
+            </div>
+            <div
+              class="flex items-center cursor-pointer hover:text-spotify-green"
+            >
+              <div
+                class="w-6 h-6 bg-gradient-to-br from-purple-700 to-blue-400 rounded mr-3 flex items-center justify-center"
+              >
+                <i class="fas fa-heart"></i>
+              </div>
+              <span>Liked Songs</span>
+            </div>
+          </div>
+          <div class="border-t border-spotify-light-black my-3"></div>
+          <div class="text-spotify-gray">
+            <div class="mb-2">
+              <a href="#" class="hover:text-white">My Playlist #1</a>
+            </div>
+            <div class="mb-2">
+              <a href="#" class="hover:text-white">Discover Weekly</a>
+            </div>
+            <div class="mb-2">
+              <a href="#" class="hover:text-white">Release Radar</a>
+            </div>
+            <div class="mb-2">
+              <a href="#" class="hover:text-white">Rock Classics</a>
+            </div>
+            <div class="mb-2">
+              <a href="#" class="hover:text-white">Chill Hits</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="flex-1 overflow-y-auto">
+        <!-- TOP NAVBAR -->
+        <nav
+          class="flex justify-between items-center p-4 bg-spotify-black sticky top-0 z-10"
+        >
+          <div class="flex">
+            <button
+              class="bg-spotify-dark text-white p-2 rounded-full mr-2 md:hidden"
+              aria-controls="sidebarMenu"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <button class="bg-spotify-dark text-white p-2 rounded-full mr-2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="bg-spotify-dark text-white p-2 rounded-full">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="flex items-center">
+            <a
+              href="#"
+              class="border border-white text-white text-sm rounded-full px-4 py-1 font-semibold mr-3 hover:scale-105 transition-transform"
+              >🌟Upgrade</a
+            >
+            <div class="relative group">
+              <div
+                class="flex items-center cursor-pointer bg-spotify-dark rounded-full p-1 hover:bg-spotify-light-black"
+              >
+                <div
+                  class="w-7 h-7 rounded-full flex items-center justify-center overflow-hidden"
+                >
+                  <img
+                    src="https://i.postimg.cc/V60mGHLq/Id-447-034667-1.jpg"
+                    class="w-full h-full object-cover"
+                    alt="User profile"
+                  />
+                </div>
+                <span class="ml-2 mr-1">Profile</span>
+                <i class="fas fa-caret-down ml-1 mr-2"></i>
+              </div>
+              <ul
+                class="absolute right-0 mt-1 w-48 bg-spotify-light-black rounded-md shadow-lg py-1 hidden group-hover:block z-50"
+              >
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Account
+                    <i class="fas fa-external-link-alt float-right mt-1"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Support
+                    <i class="fas fa-external-link-alt float-right mt-1"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Download
+                    <i class="fas fa-external-link-alt float-right mt-1"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Settings</a
+                  >
+                </li>
+                <li><div class="border-t border-spotify-dark my-1"></div></li>
+                <li>
+                  <a
+                    class="block px-4 py-2 text-sm text-spotify-gray hover:text-white hover:bg-spotify-dark"
+                    href="#"
+                    >Log out</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- TOP NAVBAR END -->
+
+        <!-- HERO/HEADER -->
+        <header
+          class="p-6" style="background: linear-gradient(135deg, #b39f93 0%, #c29a70 20%, #8496a5 100%)"
+        >
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-end gap-6">
+              <div>
+                <div class="shadow-2xl">
+                  <img
+                    src="https://i.postimg.cc/HkKYrhH4/QBIRm-Ixeo-Uc-HD.png"
+                    alt="Playlist Cover"
+                    class="w-48 h-48 object-cover shadow-[0_4px_60px_rgba(0,0,0,0.5)]"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div class="text-xs mb-2 text-spotify-white">PLAYLIST</div>
+                  <h1 class="text-5xl font-bold mb-3">Today's Top Hits</h1>
+                  <p class="mb-1 text-spotify-white">
+                    Spotify · 28,719,302 likes · 5 songs, 1 hr 45 min
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- HERO/HEADER END -->
+
+        <!-- PLAYER CONTROLS -->
+        <div class="p-4 flex items-center">
+          <button
+            class="bg-spotify-green text-black rounded-full p-3 flex items-center justify-center mr-4 hover:scale-105 transition-transform"
+            data-song="Today's Top Hits"
+            data-artist="Spotify"
+            data-img="https://i.postimg.cc/HkKYrhH4/QBIRm-Ixeo-Uc-HD.png"
+          >
+            <i class="fas fa-play"></i>
+          </button>
+          <button
+            class="bg-spotify-dark text-white rounded-full p-3 flex items-center justify-center mr-4 hover:text-spotify-green transition-colors like-button"
+            title="Save to Your Library"
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <button
+            class="bg-spotify-dark text-white rounded-full p-3 flex items-center justify-center hover:text-spotify-green transition-colors"
+            title="More options"
+          >
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <!-- PLAYER CONTROLS END -->
+
+        <!-- SONGS LIST -->
+        <div class="p-6">
+          <div class="flex items-center text-spotify-gray mb-3 px-4">
+            <div class="w-10 text-center">#</div>
+            <div class="flex-grow">TITLE</div>
+            <div class="w-40 hidden md:block">ALBUM</div>
+            <div class="w-40 hidden md:block">DATE ADDED</div>
+            <div class="w-20 text-right"><i class="far fa-clock"></i></div>
+          </div>
+          <div class="border-t border-spotify-light-black mb-3"></div>
+
+          <!-- Song Item 1 -->
+          <div
+            class="flex items-center mb-3 px-4 py-2 rounded-md hover:bg-spotify-light-black group"
+          >
+            <div class="w-10 text-center relative">
+              <span class="group-hover:hidden">1</span>
+              <i class="fas fa-play hidden group-hover:inline-block"></i>
+            </div>
+            <div class="flex-grow flex items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e022737be35cc5245eef495be90"
+                alt="Song Cover"
+                class="w-10 h-10 mr-3"
+              />
+              <div>
+                <div class="text-white">Skyfall</div>
+                <div class="text-spotify-gray">Adele</div>
+              </div>
+            </div>
+            <div class="w-40 text-spotify-gray hidden md:block">Top #1</div>
+            <div class="w-40 text-spotify-gray hidden md:block">2 days ago</div>
+            <div class="w-20 text-spotify-gray text-right">4:46</div>
+          </div>
+
+          <!-- Song Item 2 -->
+          <div
+            class="flex items-center mb-3 px-4 py-2 rounded-md hover:bg-spotify-light-black group"
+          >
+            <div class="w-10 text-center relative">
+              <span class="group-hover:hidden">2</span>
+              <i class="fas fa-play hidden group-hover:inline-block"></i>
+            </div>
+            <div class="flex-grow flex items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e026ec7ab30397ea37295340a41"
+                alt="Song Cover"
+                class="w-10 h-10 mr-3"
+              />
+              <div>
+                <div class="text-white">Lonely</div>
+                <div class="text-spotify-gray">Akon</div>
+              </div>
+            </div>
+            <div class="w-40 text-spotify-gray hidden md:block">Cold Night</div>
+            <div class="w-40 text-spotify-gray hidden md:block">3 days ago</div>
+            <div class="w-20 text-spotify-gray text-right">3:50</div>
+          </div>
+
+          <!-- Song Item 3 -->
+          <div
+            class="flex items-center mb-3 px-4 py-2 rounded-md hover:bg-spotify-light-black group"
+          >
+            <div class="w-10 text-center relative">
+              <span class="group-hover:hidden">3</span>
+              <i class="fas fa-play hidden group-hover:inline-block"></i>
+            </div>
+            <div class="flex-grow flex items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02ebc8cfac8b586bc475b04918"
+                alt="Song Cover"
+                class="w-10 h-10 mr-3"
+              />
+              <div>
+                <div class="text-white">Summertime Sadness</div>
+                <div class="text-spotify-gray">Lana Del Rey</div>
+              </div>
+            </div>
+            <div class="w-40 text-spotify-gray hidden md:block">Summer</div>
+            <div class="w-40 text-spotify-gray hidden md:block">1 week ago</div>
+            <div class="w-20 text-spotify-gray text-right">4:25</div>
+          </div>
+
+          <!-- Song Item 4 -->
+          <div
+            class="flex items-center mb-3 px-4 py-2 rounded-md hover:bg-spotify-light-black group"
+          >
+            <div class="w-10 text-center relative">
+              <span class="group-hover:hidden">4</span>
+              <i class="fas fa-play hidden group-hover:inline-block"></i>
+            </div>
+            <div class="flex-grow flex items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02b8e072ca95df6dc435b1484f"
+                alt="Song Cover"
+                class="w-10 h-10 mr-3"
+              />
+              <div>
+                <div class="text-white">Happy Nation</div>
+                <div class="text-spotify-gray">Ace of Base</div>
+              </div>
+            </div>
+            <div class="w-40 text-spotify-gray hidden md:block">Conqueror</div>
+            <div class="w-40 text-spotify-gray hidden md:block">2 weeks ago</div>
+            <div class="w-20 text-spotify-gray text-right">4:15</div>
+          </div>
+
+          <!-- Song Item 5 -->
+          <div
+            class="flex items-center mb-3 px-4 py-2 rounded-md hover:bg-spotify-light-black group"
+          >
+            <div class="w-10 text-center relative">
+              <span class="group-hover:hidden">5</span>
+              <i class="fas fa-play hidden group-hover:inline-block"></i>
+            </div>
+            <div class="flex-grow flex items-center">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02d4c273fe23a0950d7ac9fce2"
+                alt="Song Cover"
+                class="w-10 h-10 mr-3"
+              />
+              <div>
+                <div class="text-white">Danza Kuduro</div>
+                <div class="text-spotify-gray">Don Omar, Lucenzo</div>
+              </div>
+            </div>
+            <div class="w-40 text-spotify-gray hidden md:block">Dare</div>
+            <div class="w-40 text-spotify-gray hidden md:block">3 weeks ago</div>
+            <div class="w-20 text-spotify-gray text-right">3:18</div>
+          </div>
+        </div>
+        <!-- SONGS LIST END -->
+
+        <!-- RECOMMENDED PLAYLISTS -->
+        <div class="p-4">
+          <h2 class="text-2xl font-bold mb-4">Made For You</h2>
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+          >
+            <!-- Playlist Card 1 -->
+            <div class="">
+              <div class="bg-spotify-dark h-full rounded-md overflow-hidden">
+                <div class="relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003fe0099a8dcd3054706ffc92f"
+                    class="w-full"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="bg-spotify-green text-black rounded-full p-3 absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:scale-105"
+                    data-song="Discover Weekly"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003fe0099a8dcd3054706ffc92f"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="p-4">
+                  <h5 class="text-white font-bold mb-1">Discover Weekly</h5>
+                  <p class="text-spotify-gray text-sm">
+                    Your weekly mixtape of fresh music
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 2 -->
+            <div class="">
+              <div class="bg-spotify-dark h-full rounded-md overflow-hidden">
+                <div class="relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003ca5a7517156021292e5663a6"
+                    class="w-full"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="bg-spotify-green text-black rounded-full p-3 absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:scale-105"
+                    data-song="Release Radar"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003ca5a7517156021292e5663a6"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="p-4">
+                  <h5 class="text-white font-bold mb-1">Release Radar</h5>
+                  <p class="text-spotify-gray text-sm">
+                    Catch all the latest music from artists you follow
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 3 -->
+            <div class="">
+              <div class="bg-spotify-dark h-full rounded-md overflow-hidden">
+                <div class="relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003e4eadd417a05b2546e866934"
+                    class="w-full"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="bg-spotify-green text-black rounded-full p-3 absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:scale-105"
+                    data-song="Daily Mix 1"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003e4eadd417a05b2546e866934"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="p-4">
+                  <h5 class="text-white font-bold mb-1">Daily Mix 1</h5>
+                  <p class="text-spotify-gray text-sm">
+                    Taylor Swift, Olivia Rodrigo, Billie Eilish and more
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 4 -->
+            <div class="">
+              <div class="bg-spotify-dark h-full rounded-md overflow-hidden">
+                <div class="relative">
+                  <img
+                    src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d5aa349188974978351b0f9f"
+                    class="w-full"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="bg-spotify-green text-black rounded-full p-3 absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:scale-105"
+                    data-song="Daily Mix 2"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003ec69667b99b171410a225f14"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="p-4">
+                  <h5 class="text-white font-bold mb-1">Daily Mix 2</h5>
+                  <p class="text-spotify-gray text-sm">
+                    Drake, Kendrick Lamar, J. Cole and more
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playlist Card 5 -->
+            <div class="">
+              <div class="bg-spotify-dark h-full rounded-md overflow-hidden">
+                <div class="relative">
+                  <img
+                    src="https://i.scdn.co/image/ab67706f00000003b70e0223f544b1faa2e95ed0"
+                    class="w-full"
+                    alt="Playlist Cover"
+                  />
+                  <button
+                    class="bg-spotify-green text-black rounded-full p-3 absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:scale-105"
+                    data-song="Mood Booster"
+                    data-artist="Spotify"
+                    data-img="https://i.scdn.co/image/ab67706f00000003b70e0223f544b1faa2e95ed0"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="p-4">
+                  <h5 class="text-white font-bold mb-1">Mood Booster</h5>
+                  <p class="text-spotify-gray text-sm">
+                    Get happy with today's dose of feel-good songs!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- RECOMMENDED PLAYLISTS END -->
+
+        <!-- GENRES SECTION -->
+        <div class="p-4">
+          <h2 class="text-2xl font-bold mb-4">Browse Categories</h2>
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+          >
+            <!-- Genre Card 1 -->
+            <div class="">
+              <div
+                class="rounded-lg overflow-hidden relative h-48 cursor-pointer hover:scale-105 transition-transform duration-300"
+                style="background-color: #dc148c"
+              >
+                <h3
+                  class="text-white font-bold text-xl absolute top-4 left-4 z-10"
+                >
+                  Pop
+                </h3>
+                <img
+                  src="https://i.pinimg.com/736x/16/c0/32/16c0326b05bbe94a90aa9847edcd457f.jpg"
+                  alt="Pop"
+                  class="absolute bottom-0 right-0 w-24 h-24 transform rotate-25 translate-x-4 translate-y-4"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 2 -->
+            <div class="">
+              <div
+                class="rounded-lg overflow-hidden relative h-48 cursor-pointer hover:scale-105 transition-transform duration-300"
+                style="background-color: #ba5d07"
+              >
+                <h3
+                  class="text-white font-bold text-xl absolute top-4 left-4 z-10"
+                >
+                  Hip-Hop
+                </h3>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0ey4udCd8L3OpuNbdTVBt3LWqRn_50BE0g&s"
+                  alt="Hip-Hop"
+                  class="absolute bottom-0 right-0 w-24 h-24 transform rotate-25 translate-x-4 translate-y-4"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 3 -->
+            <div class="">
+              <div
+                class="rounded-lg overflow-hidden relative h-48 cursor-pointer hover:scale-105 transition-transform duration-300"
+                style="background-color: #e8115b"
+              >
+                <h3
+                  class="text-white font-bold text-xl absolute top-4 left-4 z-10"
+                >
+                  Rock
+                </h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ca966977380ba83ad20f968e"
+                  alt="Rock"
+                  class="absolute bottom-0 right-0 w-24 h-24 transform rotate-25 translate-x-4 translate-y-4"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 4 -->
+            <div class="">
+              <div
+                class="rounded-lg overflow-hidden relative h-48 cursor-pointer hover:scale-105 transition-transform duration-300"
+                style="background-color: #148a08"
+              >
+                <h3
+                  class="text-white font-bold text-xl absolute top-4 left-4 z-10"
+                >
+                  Indie
+                </h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d38fb1104310e48a8477467f"
+                  alt="Indie"
+                  class="absolute bottom-0 right-0 w-24 h-24 transform rotate-25 translate-x-4 translate-y-4"
+                />
+              </div>
+            </div>
+
+            <!-- Genre Card 5 -->
+            <div class="">
+              <div
+                class="rounded-lg overflow-hidden relative h-48 cursor-pointer hover:scale-105 transition-transform duration-300"
+                style="background-color: #8d67ab"
+              >
+                <h3
+                  class="text-white font-bold text-xl absolute top-4 left-4 z-10"
+                >
+                  Chill
+                </h3>
+                <img
+                  src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da842128d1e7b21f4f57fa1d0174"
+                  alt="Chill"
+                  class="absolute bottom-0 right-0 w-24 h-24 transform rotate-25 translate-x-4 translate-y-4"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- GENRES SECTION END -->
+      </div>
+      <!-- MAIN CONTENT END -->
+    </div>
+
+    <!-- NOW PLAYING BAR -->
+    <div
+      class="fixed bottom-0 left-0 right-0 bg-spotify-dark p-2 border-t border-spotify-light-black"
+    >
+      <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <!-- Current Song Info -->
+          <div class="w-full md:w-1/4 flex items-center justify-center md:justify-start mb-2 md:mb-0">
+            <img
+              src="https://i.scdn.co/image/ab67616d00001e022737be35cc5245eef495be90"
+              alt="Current Song"
+              class="w-10 h-10 md:w-14 md:h-14 mr-3"
+            />
+            <div>
+              <div class="text-white text-sm">Skyfall</div>
+              <div class="text-spotify-gray text-xs">Adele</div>
+            </div>
+            <button class="text-spotify-gray hover:text-white ml-3">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+
+          <!-- Player Controls -->
+          <div class="w-full md:w-2/4 mb-2 md:mb-0">
+            <div class="flex flex-col items-center">
+              <div class="flex items-center justify-center mb-2">
+                <button class="text-spotify-gray hover:text-white mx-1 md:mx-2 hidden sm:block">
+                  <i class="fas fa-random"></i>
+                </button>
+                <button class="text-spotify-gray hover:text-white mx-1 md:mx-2">
+                  <i class="fas fa-step-backward"></i>
+                </button>
+                <button
+                  class="w-8 h-8 md:w-10 md:h-10 bg-white text-black rounded-full flex items-center mx-1 md:mx-2 justify-center shadow"
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+                <button class="text-spotify-gray hover:text-white mx-1 md:mx-2">
+                  <i class="fas fa-step-forward"></i>
+                </button>
+                <button class="text-spotify-gray hover:text-white mx-1 md:mx-2 hidden sm:block">
+                  <i class="fas fa-redo"></i>
+                </button>
+              </div>
+              <div class="flex items-center w-full px-2 md:px-0">
+                <span class="text-spotify-gray text-xs mr-1 md:mr-2">0:45</span>
+                <div class="flex-grow h-1 bg-spotify-light-black rounded-full">
+                  <div
+                    class="h-full bg-spotify-green rounded-full"
+                    style="width: 25%"
+                    role="progressbar"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <span class="text-spotify-gray text-xs ml-1 md:ml-2">4:46</span>
+              </div>
+            </div>
+          </div>
+
+         <!-- Volume Controls -->
+<div class="w-full md:w-1/4 flex items-center justify-center md:justify-end">
+  <button class="text-spotify-gray hover:text-white mr-2 hidden sm:block">
+    <i class="fas fa-list"></i>
+  </button>
+  <button class="text-spotify-gray hover:text-white mr-2 hidden sm:block">
+    <i class="fas fa-desktop"></i>
+  </button>
+  <div class="flex items-center">
+    <button class="text-spotify-gray hover:text-white mr-2">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <input
+      type="range"
+      class="w-20 sm:w-24 h-1 appearance-none bg-spotify-light-black rounded-full outline-none"
+      id="volumeControl"
+      min="0"
+      max="100"
+      value="70"
+    />
+  </div>
+</div>
+    <!-- NOW PLAYING BAR END -->
+
+    <!-- Toast Notifications -->
+    <div class="fixed bottom-0 right-0 p-3 z-50">
+      <div
+        id="likeToast"
+        class="hidden rounded-lg shadow-lg overflow-hidden max-w-xs"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div
+          class="bg-spotify-dark text-white px-4 py-2 flex justify-between items-center"
+        >
+          <i class="fas fa-heart text-red-500 mr-2"></i>
+          <strong class="mr-auto">Added to Liked Songs</strong>
+          <button
+            type="button"
+            class="text-white hover:text-spotify-gray"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <div
+        id="playToast"
+        class="hidden rounded-lg shadow-lg overflow-hidden max-w-xs"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div
+          class="bg-spotify-dark text-white px-4 py-2 flex justify-between items-center"
+        >
+          <i class="fas fa-music text-spotify-green mr-2"></i>
+          <strong class="mr-auto">Now Playing</strong>
+          <button
+            type="button"
+            class="text-white hover:text-spotify-gray"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="bg-spotify-dark text-white px-4 py-3">
+          <span id="playingToastText">Skyfall</span>
+        </div>
+      </div>
+
+      <!-- Playlist created toast -->
+      <div
+        class="hidden rounded-lg shadow-lg overflow-hidden max-w-xs"
+        id="playlistToast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div
+          class="bg-spotify-dark text-white px-4 py-2 flex justify-between items-center"
+        >
+          <i class="fas fa-plus-square mr-2 text-spotify-green"></i>
+          <strong class="mr-auto">Playlist Created</strong>
+          <button
+            type="button"
+            class="text-white hover:text-spotify-gray"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="bg-spotify-dark text-white px-4 py-3">
+          <span id="playlistToastText"
+            >Your new playlist has been created!</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
