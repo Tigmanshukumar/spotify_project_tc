@@ -216,7 +216,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🎨 Design Resources
 
-- **🔗 [Live Demo](https://yourusername.github.io/spotify-clone)**
-- **🎨 [Figma Design](https://www.figma.com/file/your-figma-file-id/Spotify-Clone-Design)** - View the complete design system and wireframes
+- **🔗 [Live Demo](https://spotifytailwind.netlify.app/)**
+- **🎨 [Figma Design](https://www.figma.com/design/JlCrfFTTnfakU7YFblP3wN/Spotify-UI?node-id=0-1&t=3kkdNzbYTu5UdzhN-1)** - View the complete design system and wireframes
 
 Made with ❤️ and lots of ☕
